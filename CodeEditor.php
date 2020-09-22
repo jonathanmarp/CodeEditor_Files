@@ -229,6 +229,18 @@
               <a class="product" onclick="js();" style="color: yellow;">
                   <i class="fab fa-js"></i> <span style="color: #fff;">Javascript</span>
               </a>
+              <a class="product" onclick="php();" style="color: purple;">
+                  <i class="fab fa-php"></i> <span style="color: purple;">php</span>
+              </a>
+              <a class="product" onclick="cpp();" style="color: yellow;">
+                 <i class="fab fa-cuttlefish"></i><i class="fas fa-plus fa-xs"></i><i class="fas fa-plus fa-xs"></i> <span style="color: #fff;">C++</span>
+              </a>
+              <a class="product" onclick="cPrograming();" style="color: yellow;">
+                <i class="fab fa-cuttlefish"></i> <span style="color: #fff;">C</span>
+              </a>
+              <a class="product" onclick="python();" style="color: blue;">
+                  <i class="fab fa-python"></i> <span style="color: blue;">Python</span>
+              </a>
             </div>
         </div>
       </div>
@@ -254,6 +266,18 @@
         }
         function js() {
           editor.session.setMode("ace/mode/javascript");
+        }
+        function php() {
+          editor.session.setMode("ace/mode/php");
+        }
+        function cpp() {
+          editor.session.setMode("ace/mode/c_cpp");
+        }
+        function cPrograming() {
+          editor.session.setMode("ace/mode/c");
+        }
+        function python() {
+          editor.session.setMode("ace/mode/python");
         }
 
         let Navigation = [];
@@ -286,6 +310,8 @@
             document.querySelector(".contentNULL").innerHTML += `<a href="?file=${Navigation[i + 1]}&dir=." style="margin-left: 5px; margin-top: 5px;"><i class="fa fa-code"></i> ${Navigation[i + 1]}</a> <br />`;
           }
         }
+        editor.autoIndent = false;
+        editor.autoComplete = false;
         <?php if(isset($_GET['file'])) : ?>
           var xhttp = new XMLHttpRequest();
           xhttp.onreadystatechange = function() {

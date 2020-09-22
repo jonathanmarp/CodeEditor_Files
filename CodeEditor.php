@@ -9,7 +9,7 @@
   }
   if(isset($_COOKIE["Secure"])){ 
       if($_COOKIE["Secure"] == $password) {
-        echo "<script>alert('Welcome');</script>";
+        echo "<script></script>";
       } else {
         header("Location: index.php");
       }
@@ -85,12 +85,17 @@
       #editor {
         position: absolute;
         right: 0;
-        width: 80vw;
-        height: 95vh;
+        width: 100vw;
+        height: 100vh;
+        left: 0;
         bottom: 0;
       } 
       .sidebar {
-        position: absolute;
+        padding: 5px;
+        z-index: 9999999999999999999999;
+        transition: 2s;
+        transform: translate(-100%, 0);
+        position: fixed;
         color: #fff !important;
         left: 0;
         background: #282a36;
@@ -113,12 +118,15 @@
         margin-left: 1%;
       }
       .navigation {
+        z-index: 99999999999999999;
+        transition: 2s;
+        transform: translate(0, -100%);
         position: absolute;
         top: 0;
         right: 0;
         background: #252525;
         width: 80vw;
-        height: 5vh;
+        height: 9vh;
       }
       .product {
         cursor: grab;
@@ -153,7 +161,7 @@
         <span class="folders">Make new</span><br />
         <form method="POST">
           <textarea name="textareaCode" class="TempArea" style="display: none;"></textarea>
-          <button name="save" type="submit"><i class="folders fa fa-save"></i>Save</button> <br />
+          <button name="save" class="btn btn-primary" type="submit"><i class="folders fa fa-save"></i>Save</button> <br />
         </form>
         <a data-toggle="modal" data-target="#newFile"><i class="folders fa fa-file"></i> New</a> <br />
         <!-- Modal -->
@@ -240,55 +248,46 @@
         </div>
       </div>
       <div>
-        <div class="navigation">
-        <div class="dropdown">
-            <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Menu
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <div class="container">
+          <div class="navigation">
+          <div class="container text-white">
               <div class="row">
                 <div class="col-sm">
                   <a class="product" onclick="html();" style="color: red;">
-                    <i class="fab fa-html5"></i> <span style="color: black !important;">HTML</span>
+                    <i class="fab fa-html5"></i> <span style="color: #fff !important;">HTML</span>
                   </a>
                 </div>
                 <div class="col-sm">
                   <a class="product" onclick="css();" style="color: blue;">
-                    <i class="fab fa-css3"></i> <span style="color: black !important;">CSS</span>
+                    <i class="fab fa-css3"></i> <span style="color: #fff !important;">CSS</span>
                   </a>
                 </div>
                 <div class="col-sm">
-                  <a class="product" onclick="js();" style="color: black;">
-                    <i class="fab fa-js"></i> <span style="color: #black !important;">Javascript</span>
+                  <a class="product" onclick="js();" style="color: yellow;">
+                    <i class="fab fa-js"></i> <span style="color: #fff !important;">Javascript</span>
                   </a>
                 </div>
                 <div class="col-sm">
                   <a class="product" onclick="php();" style="color: purple;">
-                    <i class="fab fa-php"></i> <span style="color: purple; !important">php</span>
+                    <i class="fab fa-php"></i> <span style="color: #fff; !important">php</span>
                   </a>
                 </div>
                 <div class="col-sm">
                   <a class="product" onclick="cpp();" style="color: yellow;">
-                  <i class="fab fa-cuttlefish"></i><i class="fas fa-plus fa-xs"></i><i class="fas fa-plus fa-xs"></i> <span style="color: black !important;">C++</span>
+                  <i class="fab fa-cuttlefish"></i><i class="fas fa-plus fa-xs"></i><i class="fas fa-plus fa-xs"></i> <span style="color: #fff !important;">C++</span>
                   </a>
                 </div>
                 <div class="col-sm">
                   <a class="product" onclick="cPrograming();" style="color: yellow;">
-                    <i class="fab fa-cuttlefish"></i> <span style="color: black !important;">C</span>
+                    <i class="fab fa-cuttlefish"></i> <span style="color: #fff !important;">C</span>
                   </a>
                 </div>
                 <div class="col-sm">
                   <a class="product" onclick="python();" style="color: blue;">
-                    <i class="fab fa-python"></i> <span style="color: blue !important;">Python</span>
+                    <i class="fab fa-python"></i> <span style="color: #fff !important;">Python</span>
                   </a>
                 </div>
-              </div>
-
-            </div>
           </div>
-            
-            </div>
+          </div>
         </div>
       </div>
         <div id="editor"></div>
@@ -373,5 +372,45 @@
             document.querySelector(".TempArea").value = editor.getValue();
         });
     </script>
+    <script>
+      var map = {};
+      var handler1 = true;
+      var handler2 = true;
+      onkeydown = onkeyup = function(e){
+          e = e || event; // to deal with IE
+          map[e.keyCode] = e.type == 'keydown';
+          if(map[17] && map[16] && map[65]){
+              if(handler1 == false) {
+                document.querySelector(".sidebar").style.transform = "translate(-100%, 0)";
+                handler1 = true;
+              } else {
+                handler1 = false;
+                document.querySelector(".sidebar").style.transform = "translate(0, 0)";
+              }
+              map = {};
+          }
+          if(map[17] && map[16] && map[66]){
+              if(handler2 == false) {
+                document.querySelector(".navigation").style.transform = "translate(0, -100%)";
+                handler2 = true;
+              } else {
+                handler2 = false;
+                document.querySelector(".navigation").style.transform = "translate(0, 0)";
+              }
+              map = {};
+          }
+      }
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+        document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+      }
+
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft= "0";
+        document.body.style.backgroundColor = "white";
+      }
+      </script>
   </body>
 </html>

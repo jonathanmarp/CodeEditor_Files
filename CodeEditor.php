@@ -117,6 +117,9 @@
       a {
         cursor: alias;
       }
+      .dropdown-menu {
+        color: black !important;
+      }
     </style>
     <title>MySite</title>
   </head>
@@ -219,28 +222,53 @@
       </div>
       <div>
         <div class="navigation">
-            <div class="container">
-              <a class="product" onclick="html();" style="color: red;">
-                <i class="fab fa-html5"></i> <span style="color: #fff;">HTML</span>
-              </a>
-              <a class="product" onclick="css();" style="color: blue;">
-                  <i class="fab fa-css3"></i> <span style="color: #fff;">CSS</span>
-              </a>
-              <a class="product" onclick="js();" style="color: yellow;">
-                  <i class="fab fa-js"></i> <span style="color: #fff;">Javascript</span>
-              </a>
-              <a class="product" onclick="php();" style="color: purple;">
-                  <i class="fab fa-php"></i> <span style="color: purple;">php</span>
-              </a>
-              <a class="product" onclick="cpp();" style="color: yellow;">
-                 <i class="fab fa-cuttlefish"></i><i class="fas fa-plus fa-xs"></i><i class="fas fa-plus fa-xs"></i> <span style="color: #fff;">C++</span>
-              </a>
-              <a class="product" onclick="cPrograming();" style="color: yellow;">
-                <i class="fab fa-cuttlefish"></i> <span style="color: #fff;">C</span>
-              </a>
-              <a class="product" onclick="python();" style="color: blue;">
-                  <i class="fab fa-python"></i> <span style="color: blue;">Python</span>
-              </a>
+        <div class="dropdown">
+            <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Menu
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <div class="container">
+              <div class="row">
+                <div class="col-sm">
+                  <a class="product" onclick="html();" style="color: red;">
+                    <i class="fab fa-html5"></i> <span style="color: black !important;">HTML</span>
+                  </a>
+                </div>
+                <div class="col-sm">
+                  <a class="product" onclick="css();" style="color: blue;">
+                    <i class="fab fa-css3"></i> <span style="color: black !important;">CSS</span>
+                  </a>
+                </div>
+                <div class="col-sm">
+                  <a class="product" onclick="js();" style="color: black;">
+                    <i class="fab fa-js"></i> <span style="color: #black !important;">Javascript</span>
+                  </a>
+                </div>
+                <div class="col-sm">
+                  <a class="product" onclick="php();" style="color: purple;">
+                    <i class="fab fa-php"></i> <span style="color: purple; !important">php</span>
+                  </a>
+                </div>
+                <div class="col-sm">
+                  <a class="product" onclick="cpp();" style="color: yellow;">
+                  <i class="fab fa-cuttlefish"></i><i class="fas fa-plus fa-xs"></i><i class="fas fa-plus fa-xs"></i> <span style="color: black !important;">C++</span>
+                  </a>
+                </div>
+                <div class="col-sm">
+                  <a class="product" onclick="cPrograming();" style="color: yellow;">
+                    <i class="fab fa-cuttlefish"></i> <span style="color: black !important;">C</span>
+                  </a>
+                </div>
+                <div class="col-sm">
+                  <a class="product" onclick="python();" style="color: blue;">
+                    <i class="fab fa-python"></i> <span style="color: blue !important;">Python</span>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+            
             </div>
         </div>
       </div>

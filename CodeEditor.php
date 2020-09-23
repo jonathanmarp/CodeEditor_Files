@@ -111,7 +111,7 @@
         bottom: 0;
       } 
       .sidebar {
-        padding: 5px;
+        padding: 10px;
         z-index: 9999999999999999999999;
         transition: 2s;
         transform: translate(-100%, 0);
@@ -176,13 +176,12 @@
         color: #fff !important;
       }
     </style>
-    <title>MySite</title>
   </head>
   <body>
     <div>
       <div class="sidebar">
         <span class="folders" style="border-bottom: 1px solid #fff;">
-          <i class="fa fa-folder"></i> Folders
+          <img src="https://icons.iconarchive.com/icons/goescat/macaron/512/atom-icon.png" width="30" height="30" /> CodeEditor | <?= get_client_ip(); ?>
         </span>
         <br />
         <br />
@@ -271,6 +270,7 @@
           </div>
         </div>
         <br />
+        <div class="pb-3" style="border-top: 3px solid #fff;"></div>
         <div class="contentNULL">
 
         </div>

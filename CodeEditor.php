@@ -175,6 +175,45 @@
         background: #252525 !important;
         color: #fff !important;
       }
+      .loading {
+          z-index: 9999999999;
+          background: #282a36;
+          transition: 2s;
+          position: fixed;
+          background: orange;
+          width: 100vw;
+          height: 100vh;
+          display: none;
+      }
+      .Stop {
+        /* background: #282a36; */
+        z-index: 9999999999;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 40px;
+        display: flex;
+        align-items: center;
+      }
+
+      @media(min-width: 576) {
+        .loading {
+          display: block;
+        }
+        .navigation {
+          display: none;
+        }
+      }
+      @media (max-width: 768px) {
+        .loading {
+          display: block;
+        }
+        .navigation {
+          display: none;
+        }
+      }
+
       @keyframes glowing {
         0% {
           background-color: #44475a;
@@ -192,7 +231,13 @@
     </style>
   </head>
   <body>
-    <div>
+    <div class="loading">
+      <div class="Stop">
+          <h1><img src="https://icons.iconarchive.com/icons/goescat/macaron/512/atom-icon.png" width="50" height="50" />  CodeEditor Online | <?= get_client_ip(); ?></h1><br />
+          <h2>You Are Using Device</h2>
+      </div>
+    </div>
+    <div class="Main">
       <div class="sidebar">
         <span class="folders" style="border-bottom: 1px solid #fff;">
           <img src="https://icons.iconarchive.com/icons/goescat/macaron/512/atom-icon.png" width="30" height="30" /> CodeEditor | <?= get_client_ip(); ?>

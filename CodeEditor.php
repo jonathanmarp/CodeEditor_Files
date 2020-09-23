@@ -127,11 +127,11 @@
         width: 5px;               /* width of the entire scrollbar */
       }
       ::-webkit-scrollbar-track {
-        background: #44475a;        /* color of the tracking area */
+        background: #282a36;        /* color of the tracking area */
       }
       ::-webkit-scrollbar-thumb {
-        background-color: blue;
-        border-radius: 20px;
+        background-color: #44475a;
+        animation: glowing 1300ms infinite;
       }
       .folders {
         font-weight: bold;
@@ -174,6 +174,20 @@
         transform: translate(150%, 0);
         background: #252525 !important;
         color: #fff !important;
+      }
+      @keyframes glowing {
+        0% {
+          background-color: #44475a;
+          box-shadow: 2px 2px 3px #252525;
+        }
+        50% {
+          background-color: #44475a;
+          box-shadow: 2px 2px 10px #252525;
+        }
+        100% {
+          background-color: #44475a;
+          box-shadow: 2px 2px 3px #252525;
+        }
       }
     </style>
   </head>

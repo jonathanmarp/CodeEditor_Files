@@ -1,5 +1,5 @@
 <?php
-  $password = "lkdwf1e32rfubchwpeducv2e8vcodlwugfbiye";
+  $password = "Your Password";
   if(isset($_GET['Secure'])) {
     if($_GET["Secure"] == $password) {
       setcookie("Secure", $_GET["Secure"], time()+1*24*60*60);

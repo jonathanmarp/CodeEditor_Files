@@ -20,3 +20,5 @@ how to make a sidebar in a way
 `Ctrl + shift + a`
 And how to open the topbar
 `Ctr + shift + b`
+And Change Url You Can Make
+`Ctr + shift + u`

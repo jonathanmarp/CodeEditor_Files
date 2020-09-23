@@ -1,5 +1,5 @@
 <?php
-  $password = "Your Password";
+  $password = "lkdwf1e32rfubchwpeducv2e8vcodlwugfbiye";
   if(isset($_GET['Secure'])) {
     if($_GET["Secure"] == $password) {
       setcookie("Secure", $_GET["Secure"], time()+1*24*60*60);
@@ -112,7 +112,7 @@
       } 
       .sidebar {
         padding: 10px;
-        z-index: 9999999999999999999999;
+        z-index: 9999999;
         transition: 2s;
         transform: translate(-100%, 0);
         position: fixed;
@@ -196,6 +196,29 @@
         display: flex;
         align-items: center;
       }
+      .odading {
+        animation: rotate 4s linear infinite;
+      }
+      .conatinURL {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 40px;
+        display: flex;
+        align-items: center;
+      }
+      .urlProvider {
+        display: none;
+        transition: 2s;
+        position: fixed;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 9999999999999;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+      }
 
       @media(min-width: 576) {
         .loading {
@@ -211,6 +234,20 @@
         }
         .navigation {
           display: none;
+        }
+      }
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg)
+        }
+        40% {
+          transform: rotate(90deg)
+        }
+        60% {
+          transform: rotate(270deg)
+        }
+        100% {
+          transform: rotate(360deg)
         }
       }
 
@@ -231,16 +268,39 @@
     </style>
   </head>
   <body>
+    <div class="urlProvider">
+      <div class="conatinURL">
+        <div class="input-group mb-3">
+          <input type="text" style="width: 800px;" class="form-control resepsiURL" placeholder="URL" aria-label="Recipient's username" aria-describedby="button-addon2">
+          <div class="input-group-append">
+            <button class="buttonURL btn btn-outline-secondary" type="button" id="button-addon2">Go</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function GetEl(impulse) {
+        return document.querySelector(impulse);
+      }
+      var url = window.location.href;
+      document.querySelector(".resepsiURL").value = url;
+
+      GetEl(".buttonURL").onclick = function() {
+        window.location.href = GetEl(".resepsiURL").value;
+      }
+    </script>
+
     <div class="loading">
       <div class="Stop">
-          <h1><img src="https://icons.iconarchive.com/icons/goescat/macaron/512/atom-icon.png" width="50" height="50" />  CodeEditor Online | <?= get_client_ip(); ?></h1><br />
+          <h1><img class="odading" src="https://icons.iconarchive.com/icons/goescat/macaron/512/atom-icon.png" width="50" height="50" />  CodeEditor Online | <?= get_client_ip(); ?></h1><br />
           <h2>You Are Using Device</h2>
       </div>
     </div>
     <div class="Main">
       <div class="sidebar">
         <span class="folders" style="border-bottom: 1px solid #fff; overflow: scroll;">
-          <img src="https://icons.iconarchive.com/icons/goescat/macaron/512/atom-icon.png" width="30" height="30" /> CodeEditor <br /> | <?= get_client_ip(); ?> | <?= $_SERVER['SERVER_PORT']; ?> |
+          <img class="odading" src="https://icons.iconarchive.com/icons/goescat/macaron/512/atom-icon.png" width="30" height="30" /> CodeEditor <br /> | <?= get_client_ip(); ?> | <?= $_SERVER['SERVER_PORT']; ?> |
         </span>
         <br />
         <p style="display: none;">
@@ -372,7 +432,7 @@
                 </div>
                 <div class="col-sm">
                   <a class="product" onclick="php();" style="color: purple;">
-                    <i class="fab fa-php"></i> <span style="color: #fff; !important">php</span>
+                    <i class="fab fa-php"></i> <span style="color: #fff !important;">php</span>
                   </a>
                 </div>
                 <div class="col-sm">
@@ -490,6 +550,7 @@
       var map = {};
       var handler1 = true;
       var handler2 = true;
+      var handler3 = true;
       onkeydown = onkeyup = function(e){
           e = e || event; // to deal with IE
           map[e.keyCode] = e.type == 'keydown';
@@ -512,6 +573,16 @@
                 handler2 = false;
                 document.querySelector(".navigation").style.transform = "translate(0, 0)";
                 document.querySelector(".ranging").style.transform = "translate(0, 50%)";
+              }
+              map = {};
+          }
+          if(map[17] && map[16] && map[85]){
+              if(handler3 == false) {
+                document.querySelector(".urlProvider").style.display = "none";
+                handler3 = true;
+              } else {
+                handler3 = false;
+                document.querySelector(".urlProvider").style.display = "block";
               }
               map = {};
           }

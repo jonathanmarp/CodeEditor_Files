@@ -1,6 +1,9 @@
 # CodeEditor_Files
 Code Editor Support For Management File
 
+# important
+Don't change name file
+
 This code editor uses php and must be run on an apache machine or a machine running php on a webbrowser.
 
 the first configuration is security

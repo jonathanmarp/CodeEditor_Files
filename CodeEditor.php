@@ -93,7 +93,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title> Code Editor | <?= get_client_ip(); ?> </title>
+    <title> Code Editor | <?= get_client_ip(); ?> | <?= $_SERVER['SERVER_PORT']; ?> </title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -239,10 +239,27 @@
     </div>
     <div class="Main">
       <div class="sidebar">
-        <span class="folders" style="border-bottom: 1px solid #fff;">
-          <img src="https://icons.iconarchive.com/icons/goescat/macaron/512/atom-icon.png" width="30" height="30" /> CodeEditor | <?= get_client_ip(); ?>
+        <span class="folders" style="border-bottom: 1px solid #fff; overflow: scroll;">
+          <img src="https://icons.iconarchive.com/icons/goescat/macaron/512/atom-icon.png" width="30" height="30" /> CodeEditor <br /> | <?= get_client_ip(); ?> | <?= $_SERVER['SERVER_PORT']; ?> |
         </span>
         <br />
+        <p style="display: none;">
+          <?php
+              echo $_SERVER['PHP_SELF'];
+              echo "<br>";
+              echo $_SERVER['SERVER_NAME'];
+              echo "<br>";
+              echo $_SERVER['HTTP_HOST'];
+              echo "<br>";
+              echo $_SERVER['HTTP_REFERER'];
+              echo "<br>";
+              echo $_SERVER['HTTP_USER_AGENT'];
+              echo "<br>";
+              echo $_SERVER['SCRIPT_NAME'];
+              echo "<br>";
+              echo $_SERVER['SERVER_PORT'];
+          ?>
+        </p>
         <br />
         <span class="folders">Make new</span><br />
         <form method="POST">

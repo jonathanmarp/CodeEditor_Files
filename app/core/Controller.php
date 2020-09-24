@@ -64,5 +64,70 @@ class Controller {
 	    else
 	        $ipaddress = 'UNKNOWN';
 	    return $ipaddress;
-	} 
+	}
+	public function pingDomain(){
+	    $status = "";
+	    $domain = "";
+	    if(config['localhost'] == true) {
+	    	$domain = "localhost";
+	    } else {
+	    	$domain = base_url;
+	    }
+	    try {
+	    	$starttime = microtime(true);
+		    $file      = fsockopen ($domain, 80, $errno, $errstr, 10);
+		    $stoptime  = microtime(true);
+		    $status    = 0;
+
+		    if (!$file) {
+		    	$status = false;  
+		    	// Site is down
+		    }
+		    else {
+		        fclose($file);
+		        $status = ($stoptime - $starttime) * 1000;
+		        $status = floor($status);
+		    }
+	    } catch(Exception $e) {
+	    	$status = "localhost";
+	    }
+	    return $status;
+	}
+	public function setInterval($func = null, $interval = 0, $times = 0){
+	  if( ($func == null) || (!function_exists($func)) ){
+	    throw new Exception('We need a valid function.');
+	  }
+
+	  /*
+	  usleep delays execution by the given number of microseconds.
+	  JavaScript setInterval uses milliseconds. microsecond = one 
+	  millionth of a second. millisecond = 1/1000 of a second.
+	  Multiplying $interval by 1000 to mimic JS.
+	  */
+
+
+	  $seconds = $interval * 1000;
+
+	  /*
+	  If $times > 0, we will execute the number of times specified.
+	  Otherwise, we will execute until the client aborts the script.
+	  */
+
+	  if($times > 0){
+	    
+	    $i = 0;
+	    
+	    while($i < $times){
+	        call_user_func($func);
+	        $i++;
+	        usleep( $seconds );
+	    }
+	  } else {
+	    
+	    while(true){
+	        call_user_func($func); // Call the function you've defined.
+	        usleep( $seconds );
+	    }
+	  }
+	}
 }

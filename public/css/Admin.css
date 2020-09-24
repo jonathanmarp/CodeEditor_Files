@@ -1,0 +1,71 @@
+::-moz-selection { background: #262626; }
+::selection { background: #262626; }
+body {
+    overflow-x: hidden;
+}
+.Server {
+    position: fixed;
+    transition: 2s;
+    background: rgba(0, 0, 0, .8);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: translate(-100%, 0);
+}
+.containerss {
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+.navbar {
+    z-index: 1;
+    position: absolute;
+}
+.navbar-brand {
+    color: #fff !important;
+    font-weight: 700;
+}
+.bolding {
+    font-weight: 700;
+}
+.jumbotron {
+    z-index: 0;
+    background: url("../img/HomeBG.gif");
+    color: #fff !important;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+}
+.dot {
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+.odading {
+    animation: rotate 4s linear infinite;
+}
+@keyframes rotate {
+    0% {
+      transform: rotate(0deg)
+    }
+    40% {
+      transform: rotate(90deg)
+    }
+    60% {
+      transform: rotate(270deg)
+    }
+    100% {
+      transform: rotate(360deg)
+    }
+  }

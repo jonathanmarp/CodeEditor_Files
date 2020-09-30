@@ -8,7 +8,7 @@ class database {
 
 	public function __construct($nameFile)
 	{
-		$this->nameFile = $nameFile;
+		$this->nameFile = "database/" . $nameFile;
 		if (!file_exists($this->nameFile))  
 		{
 			$this->myFile = fopen($this->nameFile, 'w') or die('Cannot open file:  ' . $this->nameFile);
@@ -126,7 +126,19 @@ class database {
 	}
 	public function GetDataBase()
 	{
+		$this->Read();
 		return $this->arrayFile;
+	}
+	public function Set($id, $name, $title, $descrypt, $time)
+	{
+		$arr = [
+			"id" => $this->MathKey(), // Dont Remove This Part
+			"name" => $name,
+			"Title" => $title,
+			"Descrypt" => $descrypt,
+			"Time" => $time
+		];
+		$this->arrayFile[$id] = $arr;	
 	}
 
 }
